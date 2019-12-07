@@ -4,11 +4,12 @@
   "description": "React vs svelte comparison",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "node backend/app.js"
   },
   "author": "vuxor",
   "license": "MIT",
   "dependencies": {
-    "expres": "0.0.5"
+    "express": "^4.17.1"
   }
 }
