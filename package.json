@@ -1,0 +1,11 @@
+{
+  "name": "react-vs-svelte",
+  "version": "1.0.0",
+  "description": "React vs svelte comparison",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vuxor",
+  "license": "MIT"
+}
