@@ -3,6 +3,8 @@ const helmet = require('helmet')
 const admin = require('sriracha')
 const morgan = require('morgan')
 
+require('dotenv').config()
+
 require('./db.js')
 
 const app = express()
