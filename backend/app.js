@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/admin', admin())
-app.use('/api/v1.0', users)
+app.use('/api/v1.0/users', users)
 
 var port = process.env.PORT || 8080;
 app.listen(port, () => {
