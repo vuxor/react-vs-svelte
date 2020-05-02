@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/users", users);
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log("API server listening on port " + port);
 });

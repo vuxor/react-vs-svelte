@@ -8,15 +8,18 @@ router.get("/status", function(req, res) {
 });
 
 router.post("/login", function(req, res) {
+  const { username, password } = req.body;
   res.json({ user: "User login" });
+  // use local strategy here
 });
 
 router.post("/register", function(req, res) {
+  const { username, email, password } = req.body;
   User.create(
     {
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
+      username,
+      email,
+      password
     },
     function(err, user) {
       if (err) {
@@ -26,7 +29,7 @@ router.post("/register", function(req, res) {
             message: "There was a problem registering the user."
           });
       }
-      var token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: 43200 // expires in 12 hours
       });
       res.status(200).send({ auth: true, token });

@@ -34,6 +34,7 @@ userSchema.pre(
     if (!this.isModified("password")) {
       return next();
     }
+    // store only hash password
     bcrypt.hash(this.password, 10).then(hashedPassword => {
       this.password = hashedPassword;
       next();
