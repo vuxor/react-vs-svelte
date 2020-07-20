@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "node backend/app.js"
+    "backend": "nodemon backend/app.js"
   },
   "author": "vuxor",
   "license": "MIT",
@@ -21,5 +21,8 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sriracha": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
