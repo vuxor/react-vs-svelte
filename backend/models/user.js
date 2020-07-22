@@ -8,8 +8,8 @@ let userSchema = new mongoose.Schema(
       unique: true,
       required: true,
       trim: true,
-      minLength: 4,
-      maxLength: 128
+      minlength: 4,
+      maxlength: 128
     },
     password: { type: String, required: true },
     email: {
@@ -30,13 +30,13 @@ let userSchema = new mongoose.Schema(
 userSchema.pre(
   "save",
   function(next) {
-    // this refers to user
-    if (!this.isModified("password")) {
+    const user = this;
+    if (!user.isModified("password")) {
       return next();
     }
     // store only hash password
-    bcrypt.hash(this.password, 10).then(hashedPassword => {
-      this.password = hashedPassword;
+    bcrypt.hash(user.password, 10).then(hashedPassword => {
+      user.password = hashedPassword;
       next();
     });
   },
