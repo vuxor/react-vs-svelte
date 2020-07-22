@@ -1,12 +1,8 @@
-var mongoose = require('mongoose');
+let mongoose = require("mongoose");
 mongoose.connect(process.env.DB_HOST, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // we're connected!
-    console.log('we are connected to db!', db.name)
-});
-
+let db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+module.exports = db;

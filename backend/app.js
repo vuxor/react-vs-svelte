@@ -3,7 +3,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 require("dotenv").config();
 
-require("./db.js");
+const db = require("./db.js");
 const users = require("./routes/api/v1/users");
 const passport = require("passport");
 
@@ -19,6 +19,10 @@ app.use(passport.initialize());
 app.use("/api/v1/users", users);
 
 const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log("API server listening on port " + port);
+db.once("open", function () {
+  // we're connected!
+  console.log("we are connected to db!", db.name);
+  app.listen(port, () => {
+    console.log("API server listening on port " + port);
+  });
 });
