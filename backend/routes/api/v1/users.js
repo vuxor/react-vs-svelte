@@ -3,7 +3,9 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../../../models/user");
 const passport = require("passport");
-require("../../../strategies/localStrategy");
+const localStrategy = require("../../../strategies/localStrategy");
+
+passport.use(localStrategy);
 
 router.get("/status", function (req, res) {
   res.json({ status: "User status" });
