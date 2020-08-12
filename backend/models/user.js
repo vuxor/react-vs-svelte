@@ -37,6 +37,10 @@ userSchema.pre(
     // store only hash password
     bcrypt.hash(user.password, 10).then(hashedPassword => {
       user.password = hashedPassword;
+      user.profile = {
+        firstName: "John",
+        lastName: "Doe"
+      }
       next();
     });
   },

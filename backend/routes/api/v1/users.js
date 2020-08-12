@@ -4,12 +4,22 @@ const jwt = require("jsonwebtoken");
 const User = require("../../../models/user");
 const passport = require("passport");
 const localStrategy = require("../../../strategies/localStrategy");
+const jwtStrategy = require("../../../strategies/jwtStrategy");
 
 passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 router.get("/status", function (req, res) {
   res.json({ status: "User status" });
 });
+
+router.get(
+  "/profile",
+  passport.authenticate("jwt", { session: false }),
+  function (req, res) {
+    res.json({ profile: req.user.profile });
+  }
+);
 
 router.post(
   "/login",
